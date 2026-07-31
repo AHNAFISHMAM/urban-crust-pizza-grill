@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FoodImage } from '../components/FoodImage'
 import { HalalBadge } from '../components/HalalBadge'
@@ -18,22 +18,45 @@ import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 
 function HeroImage() {
-  const [loaded, setLoaded] = useState(false)
-
   return (
-    <FoodImage
-      className={`bg${loaded ? ' loaded' : ''}`}
+    <img
+      className="bg loaded"
       src={IMAGES.hero}
       alt={FOOD_IMAGES.hero.alt}
+      width={1024}
+      height={682}
       loading="eager"
       fetchPriority="high"
-      onLoad={() => setLoaded(true)}
+      decoding="sync"
     />
   )
 }
 
 export function HomePage() {
   const { hash } = useLocation()
+
+  useEffect(() => {
+    const root = document.querySelector('.page-urban-crust.home-page') as HTMLElement | null
+    const header = root?.querySelector('header.site')
+    if (!root || !header) return
+
+    const syncHeaderHeight = () => {
+      root.style.setProperty(
+        '--site-header-height',
+        `${header.getBoundingClientRect().height}px`,
+      )
+    }
+
+    syncHeaderHeight()
+    const observer = new ResizeObserver(syncHeaderHeight)
+    observer.observe(header)
+    window.addEventListener('resize', syncHeaderHeight)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', syncHeaderHeight)
+    }
+  }, [])
 
   useEffect(() => {
     if (!hash) return
@@ -47,7 +70,7 @@ export function HomePage() {
   }, [hash])
 
   return (
-    <div className="page-urban-crust">
+    <div className="page-urban-crust home-page">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--color-white)] focus:px-4 focus:py-2"
