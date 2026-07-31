@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ——— Custom scrollbar (Urban Crust brand) ——— */
+:root {
+  --scrollbar-track: #f0ece4;
+  --scrollbar-thumb: #c5a059;
+  --scrollbar-thumb-hover: #a8863f;
+  --scrollbar-size: 10px;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+html::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+}
+
 /* Urban Crust brand tokens — scoped to page wrapper */
 .page-urban-crust {
   --color-white: #ffffff;
