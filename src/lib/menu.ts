@@ -17,157 +17,346 @@ export type MenuCategory = {
   items: MenuItem[]
 }
 
-/** Full menu catalog — update prices from DoorDash as needed */
+const img = FOOD_IMAGES
+const spread = '/urban-crust-spread.jpg'
+const cheesePizza = '/tommys-pizza-cheese-queens.jpg'
+
+function pizzaPrice(in12: string, in18: string) {
+  return `12" ${in12} · 18" ${in18}`
+}
+
+function wingPrice() {
+  return '6 pcs $7.99 · 12 pcs $15.49'
+}
+
+function sidePrice(small: string, large: string) {
+  return `S ${small} · L ${large}`
+}
+
+/** Full menu catalog — prices for in-store reference; order online for live pricing */
 export const MENU_CATEGORIES: MenuCategory[] = [
   {
     id: 'pizza',
     name: 'Pizza',
-    eyebrow: 'Signature Pies',
-    intro: 'Halal-friendly pies baked to order — by the slice or whole.',
+    eyebrow: 'Handcrafted Pies',
+    intro: '100% Zabiha halal-certified pizzas — available in 12" and 18".',
     items: [
       {
-        id: 'urban-special-pizza',
-        name: 'Urban Special Pizza',
-        description:
-          'House signature pie with premium toppings, melted mozzarella, and our signature sauce.',
-        price: '$18.99',
-        image: FOOD_IMAGES.urbanSpecialPizza.src,
+        id: 'cheese-pizza',
+        name: 'Cheese Pizza',
+        description: 'Classic mozzarella on our house crust and signature sauce.',
+        price: pizzaPrice('$10.99', '$17.99'),
+        image: cheesePizza,
       },
       {
-        id: 'meat-lover-pizza',
-        name: 'Meat Lover Pizza',
+        id: 'pepperoni-pizza',
+        name: 'Pepperoni Pizza',
+        description: 'Halal pepperoni layered over melted mozzarella.',
+        price: pizzaPrice('$14.49', '$24.99'),
+        image: img.meatLoverPizza.src,
+      },
+      {
+        id: 'bbq-chicken-pizza',
+        name: 'BBQ Chicken Pizza',
         description:
-          'Loaded with halal pepperoni, beef, and sausage on a crispy New York-style crust.',
-        price: '$19.99',
-        image: FOOD_IMAGES.meatLoverPizza.src,
+          'BBQ pizza starts with a smoky, tangy BBQ sauce base, topped with tender chicken, melted cheese, and a sprinkle of pepper flakes for extra flavor. Finished with a rich BBQ sauce drizzle on top, every bite is bold, savory, and delicious.',
+        price: pizzaPrice('$14.99', '$24.99'),
+        image: img.urbanSpecialPizza.src,
       },
       {
         id: 'veggie-pizza',
         name: 'Veggie Pizza',
         description:
-          'Fresh bell peppers, onions, mushrooms, olives, and mozzarella on hand-stretched dough.',
-        price: '$17.99',
-        image: FOOD_IMAGES.veggiePizza.src,
+          'A colorful, fresh-packed pizza topped with your choice of four garden-fresh ingredients— green peppers, sweet onions, earthy mushrooms, tangy black olives, juicy pineapple, spicy jalapeños, or zesty banana peppers—bursting with flavor in every bite.',
+        price: pizzaPrice('$14.99', '$24.99'),
+        image: img.veggiePizza.src,
+      },
+      {
+        id: 'hawaiian-pizza',
+        name: 'Hawaiian Pizza',
+        description: 'Sausage and pineapple on a classic cheese base.',
+        price: pizzaPrice('$14.99', '$24.99'),
+        image: img.urbanSpecialPizza.src,
+      },
+      {
+        id: 'meat-lover-pizza',
+        name: 'Meat Lover Pizza',
+        description:
+          'A hearty, indulgent feast piled high with savory sausage, crispy bacon, tender fried chicken, and zesty pepperoni—perfect for those who crave bold, meaty flavors in every bite.',
+        price: pizzaPrice('$17.99', '$29.99'),
+        image: img.meatLoverPizza.src,
+      },
+      {
+        id: 'urban-special-pizza',
+        name: 'Urban Special Pizza',
+        description:
+          'A bold and flavorful creation featuring savory sausage, garden fresh green peppers, and sweet, tender onions, all drizzled with our signature spicy-sweet hot honey for a perfect balance of heat and indulgence.',
+        price: pizzaPrice('$17.99', '$29.99'),
+        image: img.urbanSpecialPizza.src,
       },
     ],
   },
   {
-    id: 'grill',
-    name: 'Grill & Chicken',
+    id: 'toppings',
+    name: 'Additional Toppings',
+    eyebrow: 'Customize Your Pie',
+    intro: 'Add extra toppings to any pizza — priced per topping.',
+    items: [
+      {
+        id: 'meat-toppings',
+        name: 'Meat Toppings',
+        description:
+          'Pepperoni, sausage, bacon bits, beef, or chicken — add to any pizza.',
+        price: '12" $2 each · 18" $4 each',
+        image: img.meatLoverPizza.src,
+      },
+      {
+        id: 'veggie-toppings',
+        name: 'Veggie Toppings',
+        description:
+          'Mushroom, onion, green pepper, olives, jalapeño, or pineapple.',
+        price: '12" $1 each · 18" $2 each',
+        image: img.veggiePizza.src,
+      },
+    ],
+  },
+  {
+    id: 'burgers',
+    name: 'Burgers',
     eyebrow: 'From the Grill',
-    intro: 'Smash burgers and crispy fried chicken made fresh.',
+    intro: 'Smash burgers and sandwiches made fresh to order.',
     items: [
       {
         id: 'smash-burger',
         name: 'Smash Burger',
         description:
-          'Double-smashed halal beef patty, American cheese, pickles, and special sauce on a toasted bun.',
-        price: '$11.99',
-        image: FOOD_IMAGES.smashBurger.src,
+          'Includes meat patty, cheese, caramelized onion, and house sauce.',
+        price: '$7.49',
+        image: img.smashBurger.src,
       },
       {
-        id: 'fried-chicken',
-        name: 'Fried Chicken',
+        id: 'urban-special-burger',
+        name: 'Urban Special Burger',
         description:
-          'Crispy golden halal fried chicken — juicy inside, seasoned and fried to perfection.',
-        price: '$13.99',
-        image: FOOD_IMAGES.friedChicken.src,
+          'Includes double beef, pepperjack cheese, bacon, jalapeño, and house sauce.',
+        price: '$12.49',
+        image: img.smashBurger.src,
+      },
+      {
+        id: 'classic-sandwich',
+        name: 'Classic Sandwich',
+        description:
+          'Includes chicken patty, caramelized onion, and house sauce.',
+        price: '$7.99',
+        image: img.smashBurger.src,
       },
     ],
   },
   {
     id: 'wings',
     name: 'Wings',
-    eyebrow: 'Wings',
-    intro: 'Tossed in bold sauces — perfect for sharing or solo.',
+    eyebrow: 'Tossed & Sauced',
+    intro: 'Available in 6- or 12-piece orders — pick your flavor.',
     items: [
+      {
+        id: 'hot-wings',
+        name: 'Hot Wings',
+        description: 'Classic heat — crispy wings tossed in our spicy sauce.',
+        price: wingPrice(),
+        image: img.nagaWings.src,
+      },
+      {
+        id: 'bbq-wings',
+        name: 'BBQ Wings',
+        description: 'Smoky, sweet BBQ glaze on crispy halal wings.',
+        price: wingPrice(),
+        image: img.sweetChiliWings.src,
+      },
       {
         id: 'sweet-chili-wings',
         name: 'Sweet Chili Wings',
-        description:
-          'Crispy wings glazed in a sweet and tangy chili sauce with a mild kick.',
-        price: '$12.99',
-        image: FOOD_IMAGES.sweetChiliWings.src,
+        description: 'Sweet and tangy chili glaze with a mild kick.',
+        price: wingPrice(),
+        image: img.sweetChiliWings.src,
       },
       {
-        id: 'naga-wings',
-        name: 'Naga Wings',
-        description:
-          'Fiery Naga pepper sauce for heat lovers — bold, spicy, and unforgettable.',
-        price: '$12.99',
-        image: FOOD_IMAGES.nagaWings.src,
+        id: 'mango-habanero-wings',
+        name: 'Mango Habanero Wings',
+        description: 'Tropical mango balanced with habanero heat.',
+        price: wingPrice(),
+        image: img.nagaWings.src,
+      },
+      {
+        id: 'buffalo-wings',
+        name: 'Buffalo Wings',
+        description: 'Bold buffalo sauce — tangy, buttery, and classic.',
+        price: wingPrice(),
+        image: img.nagaWings.src,
+      },
+      {
+        id: 'lemon-pepper-wings',
+        name: 'Lemon Pepper Wings',
+        description: 'Zesty lemon pepper seasoning on crispy wings.',
+        price: wingPrice(),
+        image: img.sweetChiliWings.src,
       },
     ],
   },
   {
     id: 'sides',
     name: 'Sides',
-    eyebrow: 'Sides',
-    intro: 'The perfect pairing for any pie, burger, or wing order.',
+    eyebrow: 'Perfect Pairings',
+    intro: 'Fries, rings, tenders, and loaded favorites.',
     items: [
+      {
+        id: 'cajun-fries',
+        name: 'Cajun Fries',
+        description: 'Crispy fries tossed in bold cajun seasoning.',
+        price: sidePrice('$3.49', '$6.49'),
+        image: img.seasonedFries.src,
+      },
       {
         id: 'seasoned-fries',
         name: 'Seasoned Fries',
+        description: 'House-seasoned fries — hot and crispy.',
+        price: sidePrice('$3.99', '$6.99'),
+        image: img.seasonedFries.src,
+      },
+      {
+        id: 'curly-fries',
+        name: 'Curly Fries',
+        description: 'Golden curly fries with our signature seasoning.',
+        price: sidePrice('$3.99', '$6.99'),
+        image: img.seasonedFries.src,
+      },
+      {
+        id: 'waffle-fries',
+        name: 'Waffle Fries',
+        description: 'Crispy waffle-cut fries, lightly seasoned.',
+        price: sidePrice('$3.99', '$6.99'),
+        image: img.seasonedFries.src,
+      },
+      {
+        id: 'onion-rings',
+        name: 'Onion Rings',
+        description: 'Beer-battered rings fried until golden.',
+        price: sidePrice('$3.99', '$6.99'),
+        image: img.seasonedFries.src,
+      },
+      {
+        id: 'mozzarella-sticks',
+        name: 'Mozzarella Sticks',
+        description: 'Stretchy mozzarella in a crispy breaded shell.',
+        price: sidePrice('$4.99', '$8.99'),
+        image: spread,
+      },
+      {
+        id: 'tenders',
+        name: 'Tenders',
+        description: 'Crispy halal chicken tenders — 3 pcs (S) or 6 pcs (L).',
+        price: sidePrice('$4.99', '$9.99'),
+        image: img.friedChicken.src,
+      },
+      {
+        id: 'loaded-fries',
+        name: 'Loaded Fries',
         description:
-          'Crispy fries tossed in our house seasoning — great solo or loaded.',
-        price: '$5.99',
-        image: FOOD_IMAGES.seasonedFries.src,
+          'Onion, green pepper, jalapeños, and cheese with your choice of chicken or beef. Extras: bacon bits +$1.99 · bacon jam +$2.99.',
+        price: '$9.99',
+        image: img.seasonedFries.src,
       },
     ],
   },
   {
-    id: 'desserts',
-    name: 'Desserts',
-    eyebrow: 'Sweet Finishes',
-    intro: 'Homemade-style desserts to end your meal on a high note.',
+    id: 'fried-chicken',
+    name: 'Fried Chicken',
+    eyebrow: 'Crispy & Juicy',
+    intro: 'Family buckets or individual pieces — halal fried chicken.',
     items: [
       {
-        id: 'berry-chantilly',
-        name: 'Berry Chantilly',
-        description:
-          'Light sponge cake layered with fresh berries and chantilly cream.',
-        price: '$7.99',
-        image: FOOD_IMAGES.berryChantilly.src,
+        id: 'bucket-6',
+        name: '6 pc Bucket',
+        description: 'Six pieces of crispy halal fried chicken.',
+        price: '$9.99',
+        image: img.friedChicken.src,
       },
       {
-        id: 'tiramisu',
-        name: 'Tiramisu',
-        description:
-          'Classic Italian layers of espresso-soaked ladyfingers and mascarpone.',
-        price: '$7.99',
-        image: FOOD_IMAGES.tiramisu.src,
+        id: 'bucket-12',
+        name: '12 pc Bucket',
+        description: 'Twelve pieces — great for sharing.',
+        price: '$18.99',
+        image: img.friedChicken.src,
       },
       {
-        id: 'chocolate-tub-cake',
-        name: 'Chocolate Tub Cake',
-        description:
-          'Rich, fudgy chocolate cake served in a generous portion — pure indulgence.',
-        price: '$8.99',
-        image: FOOD_IMAGES.chocolateTubCake.src,
+        id: 'bucket-18',
+        name: '18 pc Bucket',
+        description: 'Eighteen pieces for the whole crew.',
+        price: '$27.99',
+        image: img.friedChicken.src,
       },
       {
-        id: 'turkish-caramel-milk-cake',
-        name: 'Turkish Caramel Milk Cake',
-        description:
-          'Soft milk-soaked cake with caramel notes — a Middle Eastern favorite.',
-        price: '$8.99',
-        image: FOOD_IMAGES.turkishCaramelMilkCake.src,
+        id: 'bucket-24',
+        name: '24 pc Bucket',
+        description: 'Twenty-four pieces for parties and gatherings.',
+        price: '$36.99',
+        image: img.friedChicken.src,
       },
       {
-        id: 'tres-leches',
-        name: 'Tres Leches',
-        description:
-          'Three-milk soaked sponge cake topped with whipped cream and cinnamon.',
-        price: '$7.99',
-        image: FOOD_IMAGES.tresLeches.src,
+        id: 'bucket-30',
+        name: '30 pc Bucket',
+        description: 'Our largest bucket — feed the neighborhood.',
+        price: '$46.99',
+        image: img.friedChicken.src,
       },
       {
-        id: 'red-velvet',
-        name: 'Red Velvet',
-        description:
-          'Moist red velvet layers with cream cheese frosting — a timeless classic.',
-        price: '$7.99',
-        image: FOOD_IMAGES.redVelvet.src,
+        id: 'chicken-leg',
+        name: 'Leg',
+        description: 'Single crispy fried chicken leg.',
+        price: '$1.49',
+        image: img.friedChicken.src,
+      },
+      {
+        id: 'chicken-thigh',
+        name: 'Thigh',
+        description: 'Single juicy fried chicken thigh.',
+        price: '$1.75',
+        image: img.friedChicken.src,
+      },
+      {
+        id: 'chicken-wing-piece',
+        name: 'Wing',
+        description: 'Single fried chicken wing.',
+        price: '$1.99',
+        image: img.friedChicken.src,
+      },
+    ],
+  },
+  {
+    id: 'drinks',
+    name: 'Drinks',
+    eyebrow: 'Beverages',
+    intro: 'Cold drinks to pair with your meal.',
+    items: [
+      {
+        id: 'bottle-water',
+        name: 'Bottle Water',
+        description: 'Chilled bottled water.',
+        price: '$1.00',
+        image: spread,
+      },
+      {
+        id: 'can-soda',
+        name: 'Can Soda',
+        description: 'Assorted canned sodas.',
+        price: '$2.00',
+        image: spread,
+      },
+      {
+        id: 'glass-bottle-soda',
+        name: 'Glass Bottle Soda',
+        description: 'Assorted glass bottle sodas.',
+        price: '$3.00',
+        image: spread,
       },
     ],
   },

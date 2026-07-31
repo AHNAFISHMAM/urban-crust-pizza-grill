@@ -7,8 +7,8 @@ const brand = 'Urban Crust Pizza & Grill, Brooklyn NY'
 
 export const FOOD_IMAGES = {
   hero: {
-    src: '/urban-crust-spread.jpg',
-    alt: `Pizza and grill spread at ${brand}`,
+    src: '/hero-pizza.jpg',
+    alt: `Fresh pepperoni pizza with cheese pull at ${brand}`,
   },
   urbanSpecialPizza: {
     src: '/urban-special-pizza.jpg',
@@ -68,4 +68,4 @@ export const FOOD_IMAGES = {
   },
 } as const satisfies Record<string, FoodImageAsset>
 
-export const FALLBACK_FOOD_IMAGE = FOOD_IMAGES.hero
+export const FALLBACK_FOOD_IMAGE = FOOD_IMAGES.urbanSpecialPizza

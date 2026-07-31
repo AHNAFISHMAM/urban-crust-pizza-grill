@@ -25,8 +25,8 @@ export function MenuPage() {
             <h1>Our Menu</h1>
             <HalalBadge variant="hero" />
             <p className="menu-hero-lede">
-              HMS Certified halal-friendly pizza, smash burgers, wings, sides, and
-              homemade desserts — made fresh in East NY.
+              100% Zabiha halal-certified pizza, burgers, wings, sides, fried
+              chicken, and drinks — made fresh on Liberty Avenue in East NY.
             </p>
             <a
               className="btn"

@@ -138,8 +138,8 @@ export const STORY = {
 export const ABOUT_PAGE = {
   title: 'A Taste of the Neighborhood',
   hero: {
-    image: FOOD_IMAGES.hero.src,
-    imageAlt: FOOD_IMAGES.hero.alt,
+    image: FOOD_IMAGES.meatLoverPizza.src,
+    imageAlt: FOOD_IMAGES.meatLoverPizza.alt,
     heading: 'Pizza & Grill on Liberty Avenue',
     body: 'Urban Crust is a neighborhood spot in East NY, Brooklyn — serving HMS Certified 100% halal-friendly pizza, smash burgers, wings, and grilled favorites made fresh every day. From specialty pies and loaded fries to homemade desserts, we welcome our community for dine-in, takeout, and delivery.',
   },
