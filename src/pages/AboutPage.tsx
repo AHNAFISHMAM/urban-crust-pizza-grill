@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FoodImage } from '../components/FoodImage'
 import { HalalBadge } from '../components/HalalBadge'
-import { OrderBar } from '../components/OrderBar'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { ABOUT_PAGE, SITE } from '../lib/constants'
@@ -91,7 +90,6 @@ export function AboutPage() {
       </main>
 
       <SiteFooter />
-      <OrderBar />
     </div>
   )
 }

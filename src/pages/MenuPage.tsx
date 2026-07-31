@@ -1,7 +1,6 @@
 import { HalalBadge } from '../components/HalalBadge'
 import { MenuCategoryNav } from '../components/MenuCategoryNav'
 import { MenuItemCard } from '../components/MenuItemCard'
-import { OrderBar } from '../components/OrderBar'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { SITE } from '../lib/constants'
@@ -88,7 +87,6 @@ export function MenuPage() {
       </main>
 
       <SiteFooter />
-      <OrderBar />
     </div>
   )
 }

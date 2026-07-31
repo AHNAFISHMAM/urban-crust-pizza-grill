@@ -69,7 +69,6 @@ html::-webkit-scrollbar-corner {
   --color-footer-muted: #8a8a8a;
   --color-footer-link: #e3e3e3;
   --color-footer-border: #2c2c2c;
-  --color-orderbar-menu: #2a2a2a;
   --color-dots: #c9c9c9;
 
   font-family: 'Public Sans', sans-serif;
@@ -78,14 +77,7 @@ html::-webkit-scrollbar-corner {
   line-height: 1.65;
   font-size: 16px;
   font-weight: 300;
-  padding-bottom: 68px;
   -webkit-font-smoothing: antialiased;
-}
-
-@media (min-width: 900px) {
-  .page-urban-crust {
-    padding-bottom: 0;
-  }
 }
 
 .page-urban-crust h1,
@@ -1220,49 +1212,6 @@ html::-webkit-scrollbar-corner {
   gap: 12px;
   flex-wrap: wrap;
   letter-spacing: 0.04em;
-}
-
-.page-urban-crust .orderbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 60;
-  display: flex;
-  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.page-urban-crust .orderbar a {
-  flex: 1;
-  text-align: center;
-  padding: 17px 8px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 12px;
-}
-
-.page-urban-crust .orderbar a.call {
-  flex: 0 0 26%;
-  background: var(--color-black);
-}
-
-.page-urban-crust .orderbar a.menu {
-  flex: 0 0 28%;
-  background: var(--color-orderbar-menu);
-}
-
-.page-urban-crust .orderbar a.order {
-  background: var(--color-gold);
-  color: var(--color-black);
-}
-
-@media (min-width: 900px) {
-  .page-urban-crust .orderbar {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

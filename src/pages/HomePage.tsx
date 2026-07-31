@@ -14,7 +14,6 @@ import {
 } from '../lib/constants'
 import { FOOD_IMAGES } from '../lib/images'
 import { LocationMap } from '../components/LocationMap'
-import { OrderBar } from '../components/OrderBar'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 
@@ -302,7 +301,6 @@ export function HomePage() {
       </main>
 
       <SiteFooter />
-      <OrderBar />
     </div>
   )
 }
