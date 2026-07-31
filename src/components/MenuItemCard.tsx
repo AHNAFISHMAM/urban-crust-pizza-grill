@@ -7,16 +7,33 @@ type MenuItemCardProps = {
 }
 
 export function MenuItemCard({ item }: MenuItemCardProps) {
+  const isSinglePrice = item.prices.length === 1
+
   return (
     <article className="menu-card">
       <div className="menu-card-ph">
         <FoodImage src={item.image} alt={item.name} />
       </div>
       <div className="menu-card-body">
-        <div className="menu-card-head">
-          <h3>{item.name}</h3>
-          <span className="menu-card-price">{item.price}</span>
+        <h3 className="menu-card-title">{item.name}</h3>
+
+        <div
+          className={`menu-card-prices${isSinglePrice ? ' menu-card-prices--single' : ''}`}
+          aria-label={`Pricing for ${item.name}`}
+        >
+          {item.prices.map((option) => (
+            <div
+              key={`${option.size}-${option.amount}`}
+              className="menu-card-price-row"
+            >
+              {option.size ? (
+                <span className="menu-card-size">{option.size}</span>
+              ) : null}
+              <span className="menu-card-amount">{option.amount}</span>
+            </div>
+          ))}
         </div>
+
         <p className="menu-card-desc">{item.description}</p>
         <a
           className="btn menu-card-order"
